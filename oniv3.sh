@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 
-CONFIG_URL="https://drive.google.com/uc?export=download&id=1EuVW_nECrltFYLkqE7cY1Z8pAK9lo8UW"
+CONFIG_URL="https://drive.google.com/uc?export=download&id=118fLVGGpv1J6-1BhrN5uBFuqHE51rNwS"
 DEST_PATH="/storage/emulated/0/Download/config.txt"
 
 
