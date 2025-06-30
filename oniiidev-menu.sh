@@ -42,7 +42,7 @@ elif [ "$choice" == "2" ]; then
         pid=$(echo "$line" | awk '{print $1}')
         name=$(echo "$line" | awk '{print $NF}')
 
-        # Lấy %CPU từ top (nâng cao)
+
         cpu=$(top -n 1 | grep "$pid" | awk '{print $9}')
         [ -z "$cpu" ] && cpu="?"
 
