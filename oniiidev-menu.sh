@@ -3,6 +3,7 @@
 CONFIG_URL="https://drive.google.com/uc?export=download&id=1EuVW_nECrltFYLkqE7cY1Z8pAK9lo8UW"
 DEST_PATH="/storage/emulated/0/Download/config.txt"
 
+while true; do
 clear
 echo -e "\e[34m"
 echo "         _   _______ _____ _____  _____  _____  _____"
@@ -31,30 +32,30 @@ if [ "$choice" == "1" ]; then
     else
         echo "error , kiem tra lai ket noi"
     fi
+    read -p "bam Enter de quay lai menu..."
 
 elif [ "$choice" == "2" ]; then
-    echo "mày có chạy roblox không đấy ?"
-
-    running=false
-
+    echo "dang quet cac tien trinh lien quan den roblox..."
+    found=false
     top -n 1 | grep -i roblox | grep -v grep | while read -r line; do
         pid=$(echo "$line" | awk '{print $1}')
         cpu=$(echo "$line" | awk '{print $9}')
         name=$(echo "$line" | awk '{print $12}')
 
         if [[ "$cpu" == "0.0" || "$cpu" == "0" ]]; then
-            status="idle/may lag"
+            status="idle hoặc đứng hình"
         else
             status="online"
         fi
 
         echo "$name (pid: $pid) | cpu: $cpu% | $status"
-        running=true
+        found=true
     done
 
-    if [ "$running" = false ]; then
-        echo "THẰNG LOL ĐÉO CHẠY ROBLOX XONG DÙNG FUNC NÀY LÀ SAO ?"
+    if [ "$found" = false ]; then
+        echo "không thấy tiến trình roblox nào chạy"
     fi
+    read -p "bam Enter de quay lai menu..."
 
 elif [ "$choice" == "3" ]; then
     read -p "NHẬP JOB ID NẾU MÀY CÓ: " job
@@ -85,6 +86,9 @@ elif [ "$choice" == "3" ]; then
 elif [ "$choice" == "4" ]; then
     echo "thoat"
     exit 0
+
 else
     echo "NGU"
+    read -p "bam Enter de quay lai menu..."
 fi
+done
