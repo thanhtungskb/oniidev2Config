@@ -35,15 +35,19 @@ if [ "$choice" == "1" ]; then
     read -p "bam Enter de quay lai menu..."
 
 elif [ "$choice" == "2" ]; then
-    echo "dang quet cac tien trinh lien quan den roblox..."
-    found=false
-    top -n 1 | grep -i roblox | grep -v grep | while read -r line; do
-        pid=$(echo "$line" | awk '{print $1}')
-        cpu=$(echo "$line" | awk '{print $9}')
-        name=$(echo "$line" | awk '{print $12}')
+    echo "ĐANG CỐ GẮNG ĐƯA TAB ROBLOX VÀO VÒNG LAO LÝ !"
 
-        if [[ "$cpu" == "0.0" || "$cpu" == "0" ]]; then
-            status="idle hoặc đứng hình"
+    found=false
+    ps -A | grep -i roblox | grep -v grep | while read -r line; do
+        pid=$(echo "$line" | awk '{print $1}')
+        name=$(echo "$line" | awk '{print $NF}')
+
+        # Lấy %CPU từ top (nâng cao)
+        cpu=$(top -n 1 | grep "$pid" | awk '{print $9}')
+        [ -z "$cpu" ] && cpu="?"
+
+        if [[ "$cpu" == "0" || "$cpu" == "0.0" || "$cpu" == "?" ]]; then
+            status="idle hoặc lag"
         else
             status="online"
         fi
@@ -53,9 +57,10 @@ elif [ "$choice" == "2" ]; then
     done
 
     if [ "$found" = false ]; then
-        echo "không thấy tiến trình roblox nào chạy"
+        echo "không phát hiện tab roblox nào đang chạy"
     fi
-    read -p "bam Enter de quay lai menu..."
+
+    read -p "bấm Enter để quay lại menu..."
 
 elif [ "$choice" == "3" ]; then
     read -p "NHẬP JOB ID NẾU MÀY CÓ: " job
