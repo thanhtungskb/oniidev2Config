@@ -83,11 +83,12 @@ elif [ "$choice" == "3" ]; then
     read -p "map id: " map
 
     echo "đang mở roblox cho óc cặc ..."
-    am start --user 0 -n com.roblox.client/com.roblox.client.Activity >/dev/null
-    sleep 2
 
-    if [[ "$job" != "n" && "$map" != "n" ]]; then
-        echo "chuyển tới map ( nếu có server vip là thêm vào job id nhé đĩ mẹ ngu cặc )."
+    if [[ "$job" == "n" || "$map" == "n" ]]; then
+
+        am start -a android.intent.action.VIEW -d "roblox://"
+    else
+
         am start -a android.intent.action.VIEW -d "roblox://placeID=$map&jobID=$job"
     fi
 
@@ -95,9 +96,9 @@ elif [ "$choice" == "3" ]; then
     while true; do
         if ! pgrep -f "com.roblox.client" > /dev/null; then
             echo "máy quá yếu ... đang gọi hồn dậy lại !"
-            am start --user 0 -n com.roblox.client/com.roblox.client.Activity >/dev/null
-            sleep 2
-            if [[ "$job" != "n" && "$map" != "n" ]]; then
+            if [[ "$job" == "n" || "$map" == "n" ]]; then
+                am start -a android.intent.action.VIEW -d "roblox://"
+            else
                 am start -a android.intent.action.VIEW -d "roblox://placeID=$map&jobID=$job"
             fi
         fi
