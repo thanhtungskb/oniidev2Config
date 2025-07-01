@@ -43,22 +43,37 @@ if [ "$choice" == "1" ]; then
     read -p "enter để về lại menu cặc"
 
 elif [ "$choice" == "2" ]; then
-    echo "process scan .... skibidi"
+    echo
+    echo "roblox tab manager skibidi"
+    echo
+
     found=false
-    ps -A | grep -i roblox | grep -v grep | while read -r line; do
-        pid=$(echo "$line" | awk '{print $1}')
-        name=$(echo "$line" | awk '{print $NF}')
-        cpu=$(top -n 1 | grep "$pid" | awk '{print $9}')
-        [ -z "$cpu" ] && cpu="?"
-        status="có vấn đề và lag như cứt"
-        [[ "$cpu" != "0" && "$cpu" != "0.0" && "$cpu" != "?" ]] && status="còn sống"
-        echo "$name (pid: $pid) | CPU: $cpu% | $status"
-        found=true
+    printf "\e[36m╔════════════╦══════════════╦════════════╦════════════════════╗\n"
+    printf "║   PID      ║   Process    ║   CPU (%)  ║          Status          ║\n"
+    printf "╠════════════╬══════════════╬════════════╬══════════════════════════╣\e[0m\n"
+
+    targets=("com.roblox.client" "roblox" "roblox_clone_1" "robloxmod" "HD-Player" "ldplayer" "dnplayer" "nox" "MEmuHeadless" "LDBOXHeadless")
+
+    for name in "${targets[@]}"; do
+        pids=$(pgrep -f "$name")
+        for pid in $pids; do
+            cpu=$(top -n 1 | grep "$pid" | awk '{print $9}')
+            [[ -z "$cpu" ]] && cpu="?"
+            status="⚠️ idle"
+            [[ "$cpu" != "0" && "$cpu" != "0.0" && "$cpu" != "?" ]] && status="✅ đang chạy"
+            printf "║ %-10s ║ %-12s ║ %-10s ║ %-18s ║\n" "$pid" "$name" "$cpu" "$status"
+            found=true
+        done
     done
+
+    printf "\e[36m╚════════════╩══════════════╩════════════╩════════════════════╝\e[0m\n"
+    echo
+
     if [ "$found" = false ]; then
-        echo "ĐÉO CHƠI ROBLOX À ?"
+        echo -e "\n❌ ĐÉO CHƠI ROBLOX À ?"
     fi
-    read -p "enter để về lại menu cặc"
+
+    read -p "enter để quay lại menu cặc"
 
 elif [ "$choice" == "3" ]; then
     read -p "job id: " job
