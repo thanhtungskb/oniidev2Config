@@ -70,7 +70,7 @@ elif [ "$choice" == "2" ]; then
     echo
 
     if [ "$found" = false ]; then
-        echo -e "\n❌ ĐÉO CHƠI ROBLOX À ?"
+        echo -e "\n lỗi tại bạn , không phải tôi"
     fi
 
     read -p "enter để quay lại menu cặc"
