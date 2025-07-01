@@ -44,12 +44,12 @@ if [ "$choice" == "1" ]; then
 
 elif [ "$choice" == "2" ]; then
     echo
-    echo "Cập nhật mới => Đã hỗ trợ cho giả lập"
+    echo "roblox tab manager skibidi"
     echo
 
     found=false
     printf "\e[36m╔════════════╦══════════════╦════════════╦════════════════════╗\n"
-    printf "║   PID      ║   Process    ║   CPU (%%)  ║          Status          ║\n"
+    printf "║   PID      ║   Process    ║   CPU (%%)  ║     Status          ║\n"
     printf "╠════════════╬══════════════╬════════════╬════════════════════╣\e[0m\n"
 
     targets=("com.roblox.client" "roblox" "roblox_clone_1" "robloxmod" "HD-Player" "ldplayer" "dnplayer" "nox" "MEmuHeadless" "LDBOXHeadless")
@@ -70,10 +70,11 @@ elif [ "$choice" == "2" ]; then
     echo
 
     if [ "$found" = false ]; then
-        echo -e "\n= ĐÉO CHƠI ROBLOX À THẰNG LOL  ?"
+        echo -e "\n❌ ĐÉO CHƠI ROBLOX À ?"
     fi
 
     read -p "enter để quay lại menu cặc"
+
 
 elif [ "$choice" == "3" ]; then
     read -p "job id: " job
