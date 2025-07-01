@@ -44,12 +44,12 @@ if [ "$choice" == "1" ]; then
 
 elif [ "$choice" == "2" ]; then
     echo
-    echo "roblox tab manager skibidi"
+    echo "Đã cập nhật hỗ trợ cho giả lập !"
     echo
 
     found=false
     printf "\e[36m╔════════════╦══════════════╦════════════╦════════════════════╗\n"
-    printf "║   PID      ║   Process    ║   CPU (%%)  ║     Status          ║\n"
+    printf "║   PID      ║   Process    ║   CPU (%%)  ║     Status         ║\n"
     printf "╠════════════╬══════════════╬════════════╬════════════════════╣\e[0m\n"
 
     targets=("com.roblox.client" "roblox" "roblox_clone_1" "robloxmod" "HD-Player" "ldplayer" "dnplayer" "nox" "MEmuHeadless" "LDBOXHeadless")
