@@ -85,25 +85,29 @@ elif [ "$choice" == "3" ]; then
     echo "đang mở roblox cho óc cặc ..."
 
     if [[ "$job" == "n" || "$map" == "n" ]]; then
-
         am start -a android.intent.action.VIEW -d "roblox://"
     else
-
         am start -a android.intent.action.VIEW -d "roblox://placeID=$map&jobID=$job"
     fi
 
+    sleep 10  # Chờ Roblox khởi động xong (tránh mở lại quá sớm)
+
     echo "auto rejoin : live"
     while true; do
-        if ! pgrep -f "com.roblox.client" > /dev/null; then
+        if ! pidof com.roblox.client > /dev/null; then
             echo "máy quá yếu ... đang gọi hồn dậy lại !"
+
             if [[ "$job" == "n" || "$map" == "n" ]]; then
                 am start -a android.intent.action.VIEW -d "roblox://"
             else
                 am start -a android.intent.action.VIEW -d "roblox://placeID=$map&jobID=$job"
             fi
+
+            sleep 10  # Thêm delay sau khi rejoin
         fi
         sleep 5
     done
+
 
 elif [ "$choice" == "4" ]; then
     echo "cút !"
