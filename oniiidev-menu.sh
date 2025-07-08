@@ -1,4 +1,25 @@
 #!/data/data/com.termux/files/usr/bin/bash
+required_pkgs=("curl" "termux-api" "awk" "grep")
+
+echo "Checking Termux environment..."
+
+for pkg in "${required_pkgs[@]}"; do
+    if ! command -v "$pkg" &> /dev/null; then
+        echo "Missing: $pkg → installing..."
+        pkg install "$pkg" -y
+    else
+        echo "Found: $pkg"
+    fi
+done
+
+# Check for storage access
+if [ ! -d "/storage/emulated/0" ]; then
+    echo "Requesting storage permissions..."
+    termux-setup-storage
+    sleep 1
+fi
+
+clear
 
 VALID_KEY="9f1WLGREWruRzOcuox3se88QjauzEsOd8OQOOqrDbVWcDreEcEeBADmDitxq0CYilVxhjaY73XCsCPXE1dO2yg0mU7e5DYuztf6iCsmwT9kIzOXHW3t9X5SeqbXMefrACBRgP5sbQO1xFyRei6HojeeTVadEzFfAakx3xvG5GYXJBCDGyQ9vopLVDFRrzZQjsdXeASJmrYEZ6cS3PifZ3pboihTeHLH2fi2KG00KmQYM4Fv4Gp1fMd1gvwOxvGSwPDb0YZM7pcgMR2wR1ELYIo5DV40OubPFm3y6B3wkk3ievOwKy1ob8pJdRDLYzKUKpGKSiYVCVD5ZBrSVmY9UzTmurgQDHCDhX3vM8EIKU3ecWjK7MLgQ2ielh5DZMmHZpKtUJwWKeBSzuas4ZJtiGp2vEGO6vMeLhUwwi4mRDxeIxtoUujYaycTcv"
 
@@ -16,36 +37,21 @@ echo -e "\e[38;5;226m   ╚═════╝ ╚═╝  ╚═══╝╚═�
 echo
 echo -e "\e[36m get \e[0m"
 echo -e " Link get key : \e[4;34m$GETKEY_URL\e[0m"
-echo -e "\e[33mtype \e[1mcopy\e[0m to copy the link get key tool (note: download pkg update && pkg install termux-api -y
-and termux-setup-storage before using the copy command)\e[0m"
-read -p "→ commands : " input_key
-
-if [[ "$input_key" == "copy" ]]; then
-    if command -v termux-clipboard-set >/dev/null; then
-        echo -n "$GETKEY_URL" | termux-clipboard-set
-        echo -e "\n copied !!"
-    else
-        echo -e "\n  clipboard die, cài bằng: pkg install termux-api"
-        exit 1
-    fi
-
-    sleep 1
-    clear
-    echo "→ paste key dưới đây nếu vừa lấy"
-    read -p "→ validate key : " input_key
-fi
+echo "Tool requires key access"
+echo "→ Get your key here: $GETKEY_URL"
+read -p "→ Enter your key: " input_key
 
 if [[ "$input_key" == "$VALID_KEY" ]]; then
-    echo -e "\n key đúng , đợi 3-4s để nó load xong"
+    echo -e "\nCorrect key, loading tool..."
     sleep 1.5
     clear
 else
-    echo -e "\n key sai"
+    echo -e "\nInvalid key. Please check and try again."
     exit 1
 fi
 
 echo -e "\e[34m╔═════════════════════════════════════════════════════════════╗"
-echo    "║  tool roblox - bản 0.4.1 | dev bởi thanh tung STATUS : WORKING🟢  ║ 
+echo    "║  tool roblox - bản 0.4.1 | dev bởi thanh tung STATUS : WORKING    ║"
 echo    "╠══════════╦════════════════════════════════════════════════════════╣"
 echo    "║   [1]    ║   tải config gag                                       ║"
 echo    "╠══════════╬════════════════════════════════════════════════════════╣"
