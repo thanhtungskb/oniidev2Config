@@ -107,6 +107,15 @@ elif [ "$choice" == "2" ]; then
 
     read -p "enter để quay lại menu cặc"
 
+    printf "\e[36m╚════════════╩══════════════╩════════════╩════════════════════╝\e[0m\n"
+    echo
+
+    if [ "$found" = false ]; then
+        echo -e "\n lỗi tại bạn , không phải tôi"
+    fi
+
+    read -p "enter để quay lại menu cặc"
+
 elif [ "$choice" == "3" ]; then
     read -p "job id: " job
     read -p "map id: " map
