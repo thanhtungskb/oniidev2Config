@@ -4,7 +4,7 @@ VALID_KEY="9f1WLGREWruRzOcuox3se88QjauzEsOd8OQOOqrDbVWcDreEcEeBADmDitxq0CYilVxhj
 
 CONFIG_URL="https://drive.google.com/uc?export=download&id=1EuVW_nECrltFYLkqE7cY1Z8pAK9lo8UW"
 DEST_PATH="/storage/emulated/0/Download/config.txt"
-GETKEY_URL="https://workink.net/21px/mcu0n0uh"  # ví dụ thôi, bạn thay URL thật vào nhé
+GETKEY_URL="https://workink.net/21px/mcu0n0uh"  
 
 clear
 echo -e "\e[38;5;196m   ██████╗  ███╗   ██╗███╗  ██╗██╗ \e[38;5;202m  ███╗  ██╗\e[38;5;208m██╗   \e[38;5;214m██╗██╗\e[38;5;220m██╗"
@@ -14,34 +14,35 @@ echo -e "\e[38;5;214m  ██║   ██║██║╚██╗██║██
 echo -e "\e[38;5;220m  ╚██████╔╝██║ ╚████║██║ ╚████║█████╗\e[38;5;226m██║ ╚███║\e[38;5;190m╚█████╗██║╚██████╔╝"
 echo -e "\e[38;5;226m   ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═══╝╚════╝\e[38;5;190m╚═╝  ╚══╝\e[38;5;154m ╚════╝╚═╝ ╚═════╝ \e[0m"
 echo
-echo -e "\e[36m🔐 Hệ thống xác thực để mở ONNII Tool\e[0m"
-echo -e "🔗 Link lấy key: \e[4;34m$GETKEY_URL\e[0m"
-echo -e "\e[33mGõ \e[1mcopy\e[0m để sao chép link vào clipboard, hoặc nhập key thủ công\e[0m"
-read -p "→ Nhập key hoặc lệnh: " input_key
+echo -e "\e[36m get \e[0m"
+echo -e " Link get key : \e[4;34m$GETKEY_URL\e[0m"
+echo -e "\e[33mtype \e[1mcopy\e[0m to copy the link get key tool (note: download pkg update && pkg install termux-api -y
+and termux-setup-storage before using the copy command)\e[0m"
+read -p "→ commands : " input_key
 
 if [[ "$input_key" == "copy" ]]; then
     echo -n "$GETKEY_URL" | termux-clipboard-set
-    echo -e "\n📋 Đã sao chép link, dán vào trình duyệt để lấy key!"
-    read -p "→ Sau khi lấy được key, nhập tại đây: " input_key
+    echo -e "\n copied !!"
+    read -p "→ validate key : " input_key
 fi
 
 if [[ "$input_key" == "$VALID_KEY" ]]; then
-    echo -e "\n correct key ! wait 3-4s load tool"
+    echo -e "\n key đúng , đợi 3-4s để nó load xong"
     sleep 1
     clear
 else
-    echo -e "\nSorry, the key system does not recognize your key, please check again or the key has been changed by admin, please try to get the key again!"
+    echo -e "\n key sai"
     exit 1
 fi
 
 echo -e "\e[34m╔═════════════════════════════════════════════════════════════╗"
-echo    "║     tool kaitun gag cặc dành cho mấy banana con  | dev : ndt2002  ║"
+echo    "║  tool roblox - bản 0.4.1 | dev bởi thanh tung STATUS : WORKING🟢  ║ 
 echo    "╠══════════╦════════════════════════════════════════════════════════╣"
 echo    "║   [1]    ║   tải config gag                                       ║"
 echo    "╠══════════╬════════════════════════════════════════════════════════╣"
 echo    "║   [2]    ║   roblox tab manager skibidi                           ║"
 echo    "╠══════════╬════════════════════════════════════════════════════════╣"
-echo    "║   [3]    ║   auto rejoin (beta)                                   ║"
+echo    "║   [3]    ║   auto rejoin (beta dev)                               ║"
 echo    "╠══════════╬════════════════════════════════════════════════════════╣"
 echo    "║   [4]    ║   thoát                                                ║"
 echo -e "╚══════════╩════════════════════════════════════════════════════════╝\e[0m"
