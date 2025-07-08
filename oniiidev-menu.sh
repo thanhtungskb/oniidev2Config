@@ -150,4 +150,3 @@ else
     echo "ngu"
     read -p "enter để quay lại tab cặc"
 fi
-done
