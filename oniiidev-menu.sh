@@ -4,7 +4,7 @@ VALID_KEY="9f1WLGREWruRzOcuox3se88QjauzEsOd8OQOOqrDbVWcDreEcEeBADmDitxq0CYilVxhj
 
 CONFIG_URL="https://drive.google.com/uc?export=download&id=1EuVW_nECrltFYLkqE7cY1Z8pAK9lo8UW"
 DEST_PATH="/storage/emulated/0/Download/config.txt"
-GETKEY_URL="https://oniigetkey.ndt2002.dev"  # ví dụ thôi, bạn thay URL thật vào nhé
+GETKEY_URL="https://workink.net/21px/mcu0n0uh"  # ví dụ thôi, bạn thay URL thật vào nhé
 
 clear
 echo -e "\e[38;5;196m   ██████╗  ███╗   ██╗███╗  ██╗██╗ \e[38;5;202m  ███╗  ██╗\e[38;5;208m██╗   \e[38;5;214m██╗██╗\e[38;5;220m██╗"
@@ -26,7 +26,7 @@ if [[ "$input_key" == "copy" ]]; then
 fi
 
 if [[ "$input_key" == "$VALID_KEY" ]]; then
-    echo -e "\n✅ bạn đúng là đẹp trai, truy cập thành công!"
+    echo -e "\n correct key ! wait 3-4s load tool"
     sleep 1
 else
     echo -e "\nSorry, the key system does not recognize your key, please check again or the key has been changed by admin, please try to get the key again!"
