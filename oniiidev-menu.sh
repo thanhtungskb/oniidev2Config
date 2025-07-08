@@ -1,5 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+VALID_KEY="9f1WLGREWruRzOcuox3se88QjauzEsOd8OQOOqrDbVWcDreEcEeBADmDitxq0CYilVxhjaY73XCsCPXE1dO2yg0mU7e5DYuztf6iCsmwT9kIzOXHW3t9X5SeqbXMefrACBRgP5sbQO1xFyRei6HojeeTVadEzFfAakx3xvG5GYXJBCDGyQ9vopLVDFRrzZQjsdXeASJmrYEZ6cS3PifZ3pboihTeHLH2fi2KG00KmQYM4Fv4Gp1fMd1gvwOxvGSwPDb0YZM7pcgMR2wR1ELYIo5DV40OubPFm3y6B3wkk3ievOwKy1ob8pJdRDLYzKUKpGKSiYVCVD5ZBrSVmY9UzTmurgQDHCDhX3vM8EIKU3ecWjK7MLgQ2ielh5DZMmHZpKtUJwWKeBSzuas4ZJtiGp2vEGO6vMeLhUwwi4mRDxeIxtoUujYaycTcv"
+
+clear
+echo "key system"
+read -p "key tool : " input_key
+
+if [[ "$input_key" == "$VALID_KEY" ]]; then
+    echo -e "\n correct key"
+    sleep 1
+else
+    echo -e "\n sorry, the key system does not recognize your key, please check again or the key has been changed by admin, please try to get the key again "
+    exit 1
+fi
+
 CONFIG_URL="https://drive.google.com/uc?export=download&id=1EuVW_nECrltFYLkqE7cY1Z8pAK9lo8UW"
 DEST_PATH="/storage/emulated/0/Download/config.txt"
 
