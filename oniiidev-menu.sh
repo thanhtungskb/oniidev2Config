@@ -21,14 +21,19 @@ and termux-setup-storage before using the copy command)\e[0m"
 read -p "→ commands : " input_key
 
 if [[ "$input_key" == "copy" ]]; then
-    echo -n "$GETKEY_URL" | termux-clipboard-set
-    echo -e "\n copied !!"
+    if command -v termux-clipboard-set >/dev/null; then
+        echo -n "$GETKEY_URL" | termux-clipboard-set
+        echo -e "\n copied !!"
+    else
+        echo -e "\n copy ko thành"
+        exit 1
+    fi
     read -p "→ validate key : " input_key
 fi
 
 if [[ "$input_key" == "$VALID_KEY" ]]; then
     echo -e "\n key đúng , đợi 3-4s để nó load xong"
-    sleep 1
+    sleep 1.5
     clear
 else
     echo -e "\n key sai"
