@@ -25,9 +25,13 @@ if [[ "$input_key" == "copy" ]]; then
         echo -n "$GETKEY_URL" | termux-clipboard-set
         echo -e "\n copied !!"
     else
-        echo -e "\n copy ko thành"
+        echo -e "\n  clipboard die, cài bằng: pkg install termux-api"
         exit 1
     fi
+
+    sleep 1
+    clear
+    echo "→ paste key dưới đây nếu vừa lấy"
     read -p "→ validate key : " input_key
 fi
 
