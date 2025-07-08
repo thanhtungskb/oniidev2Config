@@ -2,34 +2,36 @@
 
 VALID_KEY="9f1WLGREWruRzOcuox3se88QjauzEsOd8OQOOqrDbVWcDreEcEeBADmDitxq0CYilVxhjaY73XCsCPXE1dO2yg0mU7e5DYuztf6iCsmwT9kIzOXHW3t9X5SeqbXMefrACBRgP5sbQO1xFyRei6HojeeTVadEzFfAakx3xvG5GYXJBCDGyQ9vopLVDFRrzZQjsdXeASJmrYEZ6cS3PifZ3pboihTeHLH2fi2KG00KmQYM4Fv4Gp1fMd1gvwOxvGSwPDb0YZM7pcgMR2wR1ELYIo5DV40OubPFm3y6B3wkk3ievOwKy1ob8pJdRDLYzKUKpGKSiYVCVD5ZBrSVmY9UzTmurgQDHCDhX3vM8EIKU3ecWjK7MLgQ2ielh5DZMmHZpKtUJwWKeBSzuas4ZJtiGp2vEGO6vMeLhUwwi4mRDxeIxtoUujYaycTcv"
 
-clear
-echo "key system"
-read -p "key tool : " input_key
-
-if [[ "$input_key" == "$VALID_KEY" ]]; then
-    echo -e "\n correct key"
-    sleep 1
-else
-    echo -e "\n sorry, the key system does not recognize your key, please check again or the key has been changed by admin, please try to get the key again "
-    exit 1
-fi
-
 CONFIG_URL="https://drive.google.com/uc?export=download&id=1EuVW_nECrltFYLkqE7cY1Z8pAK9lo8UW"
 DEST_PATH="/storage/emulated/0/Download/config.txt"
+GETKEY_URL="https://oniigetkey.ndt2002.dev"  # ví dụ thôi, bạn thay URL thật vào nhé
 
-while true; do
 clear
-
-
 echo -e "\e[38;5;196m   ██████╗  ███╗   ██╗███╗  ██╗██╗ \e[38;5;202m  ███╗  ██╗\e[38;5;208m██╗   \e[38;5;214m██╗██╗\e[38;5;220m██╗"
 echo -e "\e[38;5;202m  ██╔═══██╗████╗  ██║████╗  ██║██║   \e[38;5;208m████╗ ██║\e[38;5;214m██║   \e[38;5;220m██║██║\e[38;5;226m██║"
 echo -e "\e[38;5;208m  ██║   ██║██╔██╗ ██║██╔██╗ ██║██║   \e[38;5;214m██╔██╗██║\e[38;5;220m██║   \e[38;5;226m██║██║\e[38;5;190m██║"
 echo -e "\e[38;5;214m  ██║   ██║██║╚██╗██║██║╚██╗██║██║   \e[38;5;220m██║╚████║\e[38;5;226m██║   \e[38;5;190m██║██║\e[38;5;154m██║"
 echo -e "\e[38;5;220m  ╚██████╔╝██║ ╚████║██║ ╚████║█████╗\e[38;5;226m██║ ╚███║\e[38;5;190m╚█████╗██║╚██████╔╝"
 echo -e "\e[38;5;226m   ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═══╝╚════╝\e[38;5;190m╚═╝  ╚══╝\e[38;5;154m ╚════╝╚═╝ ╚═════╝ \e[0m"
+echo
+echo -e "\e[36m🔐 Hệ thống xác thực để mở ONNII Tool\e[0m"
+echo -e "🔗 Link lấy key: \e[4;34m$GETKEY_URL\e[0m"
+echo -e "\e[33mGõ \e[1mcopy\e[0m để sao chép link vào clipboard, hoặc nhập key thủ công\e[0m"
+read -p "→ Nhập key hoặc lệnh: " input_key
 
+if [[ "$input_key" == "copy" ]]; then
+    echo -n "$GETKEY_URL" | termux-clipboard-set
+    echo -e "\n📋 Đã sao chép link, dán vào trình duyệt để lấy key!"
+    read -p "→ Sau khi lấy được key, nhập tại đây: " input_key
+fi
 
-
+if [[ "$input_key" == "$VALID_KEY" ]]; then
+    echo -e "\n✅ bạn đúng là đẹp trai, truy cập thành công!"
+    sleep 1
+else
+    echo -e "\nSorry, the key system does not recognize your key, please check again or the key has been changed by admin, please try to get the key again!"
+    exit 1
+fi
 
 echo -e "\e[34m╔═════════════════════════════════════════════════════════════╗"
 echo    "║     tool kaitun gag cặc dành cho mấy banana con  | dev : ndt2002  ║"
