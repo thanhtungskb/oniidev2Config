@@ -28,6 +28,7 @@ fi
 if [[ "$input_key" == "$VALID_KEY" ]]; then
     echo -e "\n correct key ! wait 3-4s load tool"
     sleep 1
+    clear
 else
     echo -e "\nSorry, the key system does not recognize your key, please check again or the key has been changed by admin, please try to get the key again!"
     exit 1
