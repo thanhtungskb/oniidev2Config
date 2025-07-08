@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 required_pkgs=("curl" "termux-api" "awk" "grep")
 
-echo "Checking Termux environment..."
+echo "kiểm tra những gì còn thiếu"
 
 for pkg in "${required_pkgs[@]}"; do
     if ! command -v "$pkg" &> /dev/null; then
@@ -12,14 +12,13 @@ for pkg in "${required_pkgs[@]}"; do
     fi
 done
 
-# Check for storage access
+
 if [ ! -d "/storage/emulated/0" ]; then
-    echo "Requesting storage permissions..."
+    echo "đang tải termux-setup-storage"
     termux-setup-storage
     sleep 1
 fi
 
-clear
 
 VALID_KEY="9f1WLGREWruRzOcuox3se88QjauzEsOd8OQOOqrDbVWcDreEcEeBADmDitxq0CYilVxhjaY73XCsCPXE1dO2yg0mU7e5DYuztf6iCsmwT9kIzOXHW3t9X5SeqbXMefrACBRgP5sbQO1xFyRei6HojeeTVadEzFfAakx3xvG5GYXJBCDGyQ9vopLVDFRrzZQjsdXeASJmrYEZ6cS3PifZ3pboihTeHLH2fi2KG00KmQYM4Fv4Gp1fMd1gvwOxvGSwPDb0YZM7pcgMR2wR1ELYIo5DV40OubPFm3y6B3wkk3ievOwKy1ob8pJdRDLYzKUKpGKSiYVCVD5ZBrSVmY9UzTmurgQDHCDhX3vM8EIKU3ecWjK7MLgQ2ielh5DZMmHZpKtUJwWKeBSzuas4ZJtiGp2vEGO6vMeLhUwwi4mRDxeIxtoUujYaycTcv"
 
@@ -122,7 +121,7 @@ elif [ "$choice" == "3" ]; then
         am start -a android.intent.action.VIEW -d "roblox://placeID=$map&jobID=$job"
     fi
 
-    sleep 10  # Chờ Roblox khởi động xong (tránh mở lại quá sớm)
+    sleep 10  
 
     echo "auto rejoin : live"
     while true; do
@@ -135,7 +134,7 @@ elif [ "$choice" == "3" ]; then
                 am start -a android.intent.action.VIEW -d "roblox://placeID=$map&jobID=$job"
             fi
 
-            sleep 10  # Thêm delay sau khi rejoin
+            sleep 10  
         fi
         sleep 5
     done
@@ -149,3 +148,5 @@ else
     echo "ngu"
     read -p "enter để quay lại tab cặc"
 fi
+    done  
+done  
