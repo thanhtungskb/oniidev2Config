@@ -44,7 +44,6 @@ read -p "→ Enter your key: " input_key
 if [[ "$input_key" == "$VALID_KEY" ]]; then
     echo -e "\nCorrect key, loading tool..."
     sleep 1.5
-    clear
 else
     echo -e "\nInvalid key. Please check and try again."
     exit 1
