@@ -85,19 +85,18 @@ elif [ "$choice" == "2" ]; then
 
     targets=("com.roblox.client" "roblox" "roblox_clone_1" "robloxmod" "HD-Player" "ldplayer" "dnplayer" "nox" "MEmuHeadless" "LDBOXHeadless")
 
-for name in "${targets[@]}"; do
-    ps -A | grep -i "$name" | grep -v grep | while read -r line; do
-        pid=$(echo "$line" | awk '{print $2}')
-        name_display=$(echo "$line" | awk '{print $NF}')
-        cpu=$(top -n 1 | grep "$pid" | awk '{print $9}')
-        [[ -z "$cpu" ]] && cpu="?"
-        status="⚠️ idle"
-        [[ "$cpu" != "0" && "$cpu" != "0.0" && "$cpu" != "?" ]] && status="✅ đang chạy"
-        printf "║ %-10s ║ %-12s ║ %-10s ║ %-18s ║\n" "$pid" "$name_display" "$cpu" "$status"
-        found=true
+    for name in "${targets[@]}"; do
+        ps -A | grep -i "$name" | grep -v grep | while read -r line; do
+            pid=$(echo "$line" | awk '{print $2}')
+            name_display=$(echo "$line" | awk '{print $NF}')
+            cpu=$(top -n 1 | grep "$pid" | awk '{print $9}')
+            [[ -z "$cpu" ]] && cpu="?"
+            status="⚠️ idle"
+            [[ "$cpu" != "0" && "$cpu" != "0.0" && "$cpu" != "?" ]] && status="✅ đang chạy"
+            printf "║ %-10s ║ %-12s ║ %-10s ║ %-18s ║\n" "$pid" "$name_display" "$cpu" "$status"
+            found=true
+        done
     done
-done
-
 
     printf "\e[36m╚════════════╩══════════════╩════════════╩════════════════════╝\e[0m\n"
     echo
@@ -107,7 +106,6 @@ done
     fi
 
     read -p "enter để quay lại menu cặc"
-
 
 elif [ "$choice" == "3" ]; then
     read -p "job id: " job
@@ -121,7 +119,7 @@ elif [ "$choice" == "3" ]; then
         am start -a android.intent.action.VIEW -d "roblox://placeID=$map&jobID=$job"
     fi
 
-    sleep 10  
+    sleep 10
 
     echo "auto rejoin : live"
     while true; do
@@ -134,11 +132,10 @@ elif [ "$choice" == "3" ]; then
                 am start -a android.intent.action.VIEW -d "roblox://placeID=$map&jobID=$job"
             fi
 
-            sleep 10  
+            sleep 10
         fi
         sleep 5
     done
-
 
 elif [ "$choice" == "4" ]; then
     echo "cút !"
@@ -148,5 +145,4 @@ else
     echo "ngu"
     read -p "enter để quay lại tab cặc"
 fi
-    done  
-done  
+
